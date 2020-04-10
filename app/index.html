@@ -56,6 +56,16 @@
                 }
             });
         }
+
+        function trackAnotherEvent() {
+            alert("Sent an different event");
+            window.snowplow('trackSelfDescribingEvent', {
+                schema: 'iglu:com.snplow.msc.gcp/another_example_event/jsonschema/1-0-0',
+                data: {
+                    example_field_2: "This is another example field",
+                }
+            });
+        }
     </script>
 </head>
 
@@ -65,6 +75,7 @@
     <p>If you are viewing the page using a file URL, you must edit the script URL in the Snowplow tag to include an http scheme. Otherwise a file scheme will be inferred and the page will attempt to load sp.js from the local filesystem..</p>
     <p>Press the buttons below to trigger individual tracking events:<br>
         <button type="button" onclick="trackExampleEvent()">Send an example event</button>
+        <button type="button" onclick="trackAnotherEvent()">Send a different event</button>
     </p>
 </body>
 
